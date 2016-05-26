@@ -1,0 +1,24 @@
+<ion-view view-title="Vates" name="dashboard-view">
+  <ion-nav-buttons side="right">
+    <button class="button icon-left ion-log-out button-stable" ng-click="logout()">Cerrar Sesión</button>
+  </ion-nav-buttons>
+
+  <ion-content class="padding">
+    <div class="row"><div class="col text-center">
+      <h3 class="title">Bienvenido {{username}}!</h3>
+      Area de comentarios.
+      <br><br><br>
+      <button class="button button-full button-positive" ng-click="performValidRequest()">
+        Ejemplo de request valido
+      </button>
+      <button class="button button-full button-energized" ng-click="performUnauthorizedRequest()">
+        recurso no autorizado
+      </button>
+      <button class="button button-full button-assertive" ng-click="performInvalidRequest()">
+        Request sin token
+      </button>
+      <br><br>
+      {{response}}
+    </div></div>
+  </ion-content>
+</ion-view>
