@@ -1,7 +1,12 @@
 module.exports = (function(router) {
     'use strict';
-    var bodyParser = require('body-parser');
-    //var router = require('express').Router();
+
+    // Enabling CORS
+    router.use(function(req, res, next) {
+       res.header("Access-Control-Allow-Origin", "*");
+       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+       next();
+    });
 
     // middleware to use for all requests
 	router.use(function(req, res, next) {
