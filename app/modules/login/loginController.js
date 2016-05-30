@@ -9,7 +9,7 @@ LoginController.prototype = {
     constructor: LoginController,
     login: function (username, password)  {
     	var user = loginModel.getUser(username, password);
-        return (user != null);
+        return (user != null && user.role == 'pm');
     }
 }
 
