@@ -5,8 +5,20 @@ module.exports = (function(router) {
 
 	router.route('/employees')
 	    .get(function(req, res) {
-	        var data = controller.getEmployees();
-	        res.json(data);
+	    	var query = req.query;
+	    	var pm = query.pm;
+
+	    	var data = controller.getEmployees(pm);
+	    	
+	    	res.json(data);
+		});
+
+	router.route('/employees/:id')
+	    .get(function(req, res) {
+	    	var employeeId = req.params.id;
+	    	var data = null;
+	    	data = controller.getEmployee(employeeId);
+	    	res.json(data);
 		});
 
 });

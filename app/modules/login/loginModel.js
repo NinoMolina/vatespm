@@ -8,7 +8,7 @@ function LoginModel() {
 LoginModel.prototype = {
     constructor: LoginModel,
     getUser: function (username, password) {
-    	return db.getCollection('users').findOne({$and: [{user: username}, {password: password}]});
+    	return db.getCollection('employees').findOne({$and: [{user: username}, {password: password}]});
     }
 }
 
