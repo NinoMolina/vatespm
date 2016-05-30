@@ -11,60 +11,28 @@
     <!-- ionic/angularjs js -->
     <script src="../lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+ 
 
     <!-- your app's js -->
     <script src="../js/app.js"></script>
-    <script src="../js/login_service.js"></script>
 
   </head>
   <body>
 
-  <ion-content [scroll="true"]>
-    <div class="list">
-
-            <a class="item" href="../index.html">
-              <h2>Chuck</h2>
-              <p>Desarrollador Vates Celular: 958878554</p>
+  <ion-content>
+    <div class="list" ng-controller="employeeCtrl">  
+        <ul>
+          <li>
+            <a class="item" ng-repeat="employees in employee">
+              <h2>Nombre: {{employees.name}}</h2>
+              <p> Empresa: {{employees.project.name}}</p>
+              <p> Cargo: {{employees.role}}</p>
+              <p> Correo: {{employees.email}}</p>
+              <p> PM: {{employees.pm}} </p>
             </a>
-
-             <a class="item " href="#">
-              <h2>Arnold</h2>
-             <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-             <a class="item " href="#">
-              <h2>Lisa</h2>
-               <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-             <a class="item " href="#">
-              <h2>Helga</h2>
-              <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-             <a class="item " href="#">
-              <h2>Steve</h2>
-              <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-            <a class="item " href="#">
-              <h2>Steve</h2>
-              <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-            <a class="item " href="#">
-              <h2>Steve</h2>
-              <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-            <a class="item " href="#">
-              <h2>Steve</h2>
-              <p>Desarrollador Vates Celular: 958878554</p>
-            </a>
-
-          </div>
+          </li>
+        </ul>        
+    </div>
 
   </ion-content>
     
