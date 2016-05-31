@@ -44,6 +44,10 @@ app.controller('employeeCtrl', ['$rootScope','$scope','$http',function ($rootSco
       });
 }]);
 
+app.controller('commentsCtrl', function ($scope,$state) {
+  $scope.name = $state.params.name;
+});
+
 app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('listEmployees',{
     url:'/listEmployees',
@@ -56,6 +60,14 @@ app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('login',{
     url:'/login',
     templateUrl:'templates/login.html'
+  });
+  $urlRouterProvider.otherwise('/login');
+});
+
+app.config(function ($stateProvider,$urlRouterProvider) {
+  $stateProvider.state('comments',{
+    url:'/comments/:name',
+    templateUrl:'templates/comments.html'
   });
   $urlRouterProvider.otherwise('/login');
 });
