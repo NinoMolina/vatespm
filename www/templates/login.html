@@ -1,0 +1,38 @@
+ <ion-view view-title="Vates Login">
+ <ion-content ng-controller="loginCtrl">
+    <form name="forma" ng-submit="ingresar()">         
+           
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="text" 
+                               placeholder="Username" 
+                               name="user" 
+                               required="required" 
+                               ng-model="datos.user" >
+                    </label>
+                    <label class="item item-input">
+                        <input 
+                              type="password" 
+                              placeholder="Password" 
+                              name="password" 
+                              required="required" 
+                              ng-model="datos.password">
+                    </label>
+                </div>
+                <button type="submit" class="button button-block button-calm">Login</button>
+           
+
+            <div class="row" ng-show="invalido">
+              <div class="col-md-12">
+                <br>
+                <div class="alert alert-danger">
+                  <strong>Verificar Datos</strong>
+                  <br>
+                 {{mensaje}}
+                </div>
+              </div>
+            </div>
+          </form>
+ </ion-content>
+  
+ </ion-view>
