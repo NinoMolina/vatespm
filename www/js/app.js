@@ -44,9 +44,14 @@ app.controller('employeeCtrl', ['$rootScope','$scope','$http',function ($rootSco
       });
 }]);
 
-app.controller('commentsCtrl', function ($scope,$state) {
-  $scope.name = $state.params.name;
-});
+
+//Ruteo de paginas y envio de estados a variables
+app.controller('commentsCtrl',['$scope','$state','$http', function ($scope,$state,$http) {
+  $http.get('http://localhost:8080/api/employees/'+$state.params.name+'/comments').success(function(data){
+  $scope.commentsByEmployee = data;  
+  });
+
+}]);
 
 app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('listEmployees',{

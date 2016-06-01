@@ -1,12 +1,13 @@
  <ion-view view-title="Vates Employees">
  <ion-content ng-controller="employeeCtrl">
     <div class="list">  
-           <a href="#/comments/{{employees.name}}" class="item" ng-repeat="employees in employee">
+           <a href="#/comments/{{employees.$loki}}" class="item" ng-repeat="employees in employee">
                   <h2>Nombre: {{employees.name}} {{employees.lastName}}</h2>
                   <p> Empresa: {{employees.project.name}}</p>
                   <p> Cargo: {{employees.role}}</p>
                   <p> Correo: {{employees.email}}</p>
                   <p> PM: {{employees.pm}} </p>
+                  <p> ID: {{employees.$loki}}</p>
           </a>       
     </div>
  </ion-content>
