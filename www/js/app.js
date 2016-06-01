@@ -1,4 +1,4 @@
-var app = angular.module('vatesApp',['ionic']);
+var app = angular.module('vatesApp',['ionic','ion-floating-menu']);
 
 
 /*Controlador para login*/
