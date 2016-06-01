@@ -1,0 +1,14 @@
+<ion-view view-title="Employees Comments">
+	<ion-floating-button  has-footer="false" button-color="#0040FF" icon="ion-compose" iconColor="#fff">
+	</ion-floating-button>
+	 <ion-content ng-controller="commentsCtrl">
+	      <div class="list">
+			        <a class="item" ng-repeat="comments in commentsByEmployee">
+			        	<h1><p>{{comments.comment}}</p></h1>
+			        	<p>{{comments.creationDate}}</p>
+			        	<p>{{comments.pm}}</p>
+			        </a>
+	      </div>
+	 </ion-content>
+ </ion-view>
+

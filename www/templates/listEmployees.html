@@ -1,18 +1,14 @@
  <ion-view view-title="Vates Employees">
  <ion-content ng-controller="employeeCtrl">
     <div class="list">  
-            <ul>
-              <li>
-                <a class="item" ng-repeat="employees in employee">
-                  <h2>Nombre: {{employees.name}} {{employees.lastName}}</h2>
-                  <p> Empresa: {{employees.project.name}}</p>
-                  <p> Cargo: {{employees.role}}</p>
-                  <p> Correo: {{employees.email}}</p>
-                  <p> PM: {{employees.pm}} </p>
-                  <p> </p>
-                </a>
-              </li>
-            </ul>        
+           <a href="#/comments/{{employees.$loki}}" class="item" ng-repeat="employees in employee">
+                  <h2><i class="icon ion-person"> {{employees.name}} {{employees.lastName}}</i></h2>
+                  <p><i class="icon ion-briefcase"> {{employees.project.name}}</i></p>
+                  <p><i class="icon ion-wrench"> {{employees.role}}</i></p>
+                  <p><i class="icon ion-email">    {{employees.email}}</i></p>
+                  <p><i class="icon ion-man"> {{employees.pm}}</i> </p>
+                  <p> <i class="icon ion-ios-telephone">{{employees.cellular}}</i></p>
+          </a>       
     </div>
  </ion-content>
 </ion-view>

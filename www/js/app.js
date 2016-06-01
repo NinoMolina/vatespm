@@ -1,4 +1,4 @@
-var app = angular.module('vatesApp',['ionic']);
+var app = angular.module('vatesApp',['ionic','ion-floating-menu']);
 
 
 /*Controlador para login*/
@@ -28,7 +28,7 @@ app.controller('loginCtrl', ['$rootScope','$scope','$http','$state', function($r
                if(data.logged == true){
                 alert("usuario log ok");
                 $rootScope.username=postObject.user;
-                $state.go('addComment');
+                $state.go('listEmployees');
                }else{
                 $scope.invalido = true;
                 $scope.mensaje = "Usuario no existe";
@@ -42,6 +42,14 @@ app.controller('employeeCtrl', ['$rootScope','$scope','$http',function ($rootSco
       $http.get('http://localhost:8080/api/employees?pm='+$rootScope.username).success(function(data){
        $scope.employee = data;
       });
+}]);
+
+//Ruteo de paginas y envio de estados a variables
+app.controller('commentsCtrl',['$scope','$state','$http', function ($scope,$state,$http) {
+  $http.get('http://localhost:8080/api/employees/'+$state.params.name+'/comments').success(function(data){
+  $scope.commentsByEmployee = data;  
+  });
+
 }]);
 
 app.controller('commentCtrl', ['$rootScope','$scope','$http','employeeService',function ($rootScope,$scope,$http,employeeService) {
@@ -95,6 +103,14 @@ app.config(function ($stateProvider,$urlRouterProvider) {
   }).state('login',{
     url:'/login',
     templateUrl:'templates/login.html'
+  });
+  $urlRouterProvider.otherwise('/login');
+});
+
+app.config(function ($stateProvider,$urlRouterProvider) {
+  $stateProvider.state('comments',{
+    url:'/comments/:name',
+    templateUrl:'templates/comments.html'
   });
   $urlRouterProvider.otherwise('/login');
 });
