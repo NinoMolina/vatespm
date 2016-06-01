@@ -2,7 +2,7 @@ var app = angular.module('vatesApp',['ionic','ion-floating-menu']);
 
 
 /*Controlador para login*/
-app.controller('loginCtrl', ['$rootScope','$scope','$http','$state', function($rootScope,$scope,$http,$state){
+app.controller('loginCtrl', ['$rootScope','$scope','$http','$state', function($rootScope,$scope,$http,$state){ 
 
       $scope.invalido = false;
       $scope.cargando = false;
@@ -10,6 +10,7 @@ app.controller('loginCtrl', ['$rootScope','$scope','$http','$state', function($r
       $scope.datos = {};
 
       $scope.ingresar = function(datos){
+        alert("entrando a login");
           if($scope.datos.user.length <= 1){
               $scope.invalido = true;
               $scope.mensaje = "Ingrese su usuario";
