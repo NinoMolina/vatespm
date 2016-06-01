@@ -28,7 +28,7 @@ app.controller('loginCtrl', ['$rootScope','$scope','$http','$state', function($r
                if(data.logged == true){
                 alert("usuario log ok");
                 $rootScope.username=postObject.user;
-                $state.go('listEmployees');
+                $state.go('addComment');
                }else{
                 $scope.invalido = true;
                 $scope.mensaje = "Usuario no existe";
@@ -44,16 +44,55 @@ app.controller('employeeCtrl', ['$rootScope','$scope','$http',function ($rootSco
       });
 }]);
 
+app.controller('commentCtrl', ['$rootScope','$scope','$http','employeeService',function ($rootScope,$scope,$http,employeeService) {
+      $scope.employee_id = employeeService.getSelectedEmployee().id;
+      $scope.employee_name = employeeService.getSelectedEmployee().name;
+      $scope.comment;
+      $scope.commentDate;
+
+      $scope.add = function(){
+
+        var day = $scope.commentDate.getDate();
+        var month = $scope.commentDate.getMonth() + 1;
+        var year = $scope.commentDate.getFullYear();
+
+        var commentDateFormatted = [(day < 10) ? '0' + day : day,
+                                    (month < 10) ? '0' + month : month,
+                                     year].join('/');
+
+        var newComment = {
+          comment: $scope.comment,
+          commentDate: commentDateFormatted,
+          pm: $rootScope.username
+        };
+        
+        $http.post('http://localhost:8080/api/employees/'+$scope.employee_id+'/comments', newComment).success(function(data){
+          alert(data.message);
+        });
+      }
+}]);
+
+app.service('employeeService', function () {
+      var employee = {id: 1, name: 'lmolina'};
+
+      return {
+          getSelectedEmployee: function () {
+              return employee;
+          },
+          setSelectedEmployee: function(emp) {
+              employee = emp;
+          }
+      };
+});
+
 app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('listEmployees',{
     url:'/listEmployees',
     templateUrl:'templates/listEmployees.html'
-  });
-  $urlRouterProvider.otherwise('/listEmployees');
-});
-
-app.config(function ($stateProvider,$urlRouterProvider) {
-  $stateProvider.state('login',{
+  }).state('addComment',{
+    url:'/addComment',
+    templateUrl:'templates/addComment.html'
+  }).state('login',{
     url:'/login',
     templateUrl:'templates/login.html'
   });
