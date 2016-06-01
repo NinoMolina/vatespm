@@ -1,12 +1,12 @@
 <ion-view view-title="New Comment">
-<ion-content ng-controller="commentCtrl">
+<ion-content ng-controller="CommentAddCtrl">
 
 <form name="frmNewComment" ng-submit="add()">
 
 <div class="list">
   <label class="item item-input item-stacked-label">
     <span class="input-label">Empleado</span>
-    <span class="input-label">{{employee_name}}</span>
+    <span class="input-label">{{selectedEmployee.name}} {{selectedEmployee.lastName}}</span>
   </label>
   <label class="item item-input item-stacked-label">
       <span class="input-label">Fecha Comentario</span>
