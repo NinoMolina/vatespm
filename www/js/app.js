@@ -1,79 +1,19 @@
 var app = angular.module('vatesApp',['ionic','ion-floating-menu']);
 
-
-/*Controlador para login*/
-app.controller('loginCtrl', ['$rootScope','$scope','$http','$state', function($rootScope,$scope,$http,$state){ 
-
-      $scope.invalido = false;
-      $scope.cargando = false;
-      $scope.mensaje = "";
-      $scope.datos = {};
-
-      $scope.ingresar = function(datos){
-        alert("entrando a login");
-          if($scope.datos.user.length <= 1){
-              $scope.invalido = true;
-              $scope.mensaje = "Ingrese su usuario";
-              return;
-          }else if($scope.datos.password.length <=1){
-              $scope.invalido = true;
-              $scope.mensaje = "Ingrese su contraseña";
-              return;
-          }
-          $scope.invalido=false;
-          $scope.cargando=true;
-          var postObject = new Object();
-          postObject.user = $scope.datos.user;
-          postObject.password = $scope.datos.password;
-          $http.post('http://localhost:8080/api/login',postObject).success(function(data){
-               if(data.logged == true){
-                alert("usuario log ok");
-                $rootScope.username=postObject.user;
-                $state.go('listEmployees');
-               }else{
-                $scope.invalido = true;
-                $scope.mensaje = "Usuario no existe";
-               } 
-          });
-      }
-}]);
-
-/*Controlador para obtener a los empleados.*/
-app.controller('employeeCtrl', ['$rootScope','$scope','$http',function ($rootScope,$scope,$http) {
-      $http.get('http://localhost:8080/api/employees?pm='+$rootScope.username).success(function(data){
-       $scope.employee = data;
-      });
-}]);
-
-
-//Ruteo de paginas y envio de estados a variables
-app.controller('commentsCtrl',['$scope','$state','$http', function ($scope,$state,$http) {
-  $http.get('http://localhost:8080/api/employees/'+$state.params.name+'/comments').success(function(data){
-  $scope.commentsByEmployee = data;  
-  });
-
-}]);
-
 app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('listEmployees',{
     url:'/listEmployees',
-    templateUrl:'templates/listEmployees.html'
-  });
-  $urlRouterProvider.otherwise('/listEmployees');
-});
-
-app.config(function ($stateProvider,$urlRouterProvider) {
-  $stateProvider.state('login',{
+    templateUrl:'templates/employee-list.html'
+  }).state('comments',{
+    url:'/comments',
+    templateUrl:'templates/comment-list.html',
+    cache: false,
+  }).state('addComment',{
+    url:'/addComment',
+    templateUrl:'templates/comment-add.html'
+  }).state('login',{
     url:'/login',
     templateUrl:'templates/login.html'
-  });
-  $urlRouterProvider.otherwise('/login');
-});
-
-app.config(function ($stateProvider,$urlRouterProvider) {
-  $stateProvider.state('comments',{
-    url:'/comments/:name',
-    templateUrl:'templates/comments.html'
   });
   $urlRouterProvider.otherwise('/login');
 });
