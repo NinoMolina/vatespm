@@ -1,4 +1,4 @@
-angular.module('vatesApp').controller('LoginCtrl', ['$rootScope','$scope','$http','$state', function($rootScope,$scope,$http,$state){
+angular.module('vatesApp').controller('LoginCtrl', ['$rootScope','$scope','$http','$state','loginService', function($rootScope,$scope,$http,$state,loginService){
 
       $scope.invalido = false;
       $scope.cargando = false;
@@ -17,18 +17,16 @@ angular.module('vatesApp').controller('LoginCtrl', ['$rootScope','$scope','$http
           }
           $scope.invalido=false;
           $scope.cargando=true;
-          var postObject = new Object();
-          postObject.user = $scope.datos.user;
-          postObject.password = $scope.datos.password;
-          $http.post('http://localhost:8080/api/login',postObject).success(function(data){
-               if(data.logged == true){
-                alert("usuario log ok");
-                $rootScope.username=postObject.user;
-                $state.go('listEmployees');
-               }else{
-                $scope.invalido = true;
-                $scope.mensaje = "Usuario no existe";
-               } 
+
+          loginService.login($scope.datos.user, $scope.datos.password).then(function(data){
+            if(data.logged == true) {
+              alert("usuario log ok");
+              $rootScope.username=$scope.datos.user;
+              $state.go('listEmployees');
+            }else{
+              $scope.invalido = true;
+              $scope.mensaje = "Usuario no existe";
+            } 
           });
       }
 }]);
