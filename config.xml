@@ -10,6 +10,7 @@
   <content src="index.html"/>
   <property file="secure.properties" />
   <access origin="*"/>
+  <allow-navigation href="*" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

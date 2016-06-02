@@ -1,7 +1,7 @@
  <ion-view view-title="Vates Employees">
  <ion-content ng-controller="EmployeeListCtrl">
     <div class="list">
-           <div class="item" ng-repeat="(key, employee) in employees" ng-click="showComments(key)">
+           <div class="item" ng-repeat="(key, employee) in employees" ng-click="showComments(key)" on-hold="onHold()">
                   <h2><i class="icon ion-person"> {{employee.name}} {{employee.lastName}}</i></h2>
                   <p><i class="icon ion-briefcase"> {{employee.project.name}}</i></p>
                   <p><i class="icon ion-wrench"> {{employee.role}}</i></p>

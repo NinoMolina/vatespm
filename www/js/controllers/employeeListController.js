@@ -8,6 +8,10 @@ angular.module('vatesApp').controller('EmployeeListCtrl', ['$rootScope','$scope'
       $scope.showComments = function(key) {
       	employeeService.setSelectedEmployee($scope.employees[key]);
       	$state.go('comments');
-      }
+      };
+
+      $scope.showMenu = function() {
+	  	alert('onHold');
+	  };
 
 }]);
