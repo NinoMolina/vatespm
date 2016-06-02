@@ -1,7 +1,7 @@
 angular.module('vatesApp').controller('EmployeeListCtrl', ['$rootScope','$scope','$http','$state','employeeService',function ($rootScope,$scope,$http,$state,employeeService) {
       
 
-      $http.get('http://localhost:8080/api/employees?pm='+$rootScope.username).success(function(data){
+      $http.get('http://10.10.11.218:8080/api/employees?pm='+$rootScope.username).success(function(data){
       	$scope.employees = data;
       });
 

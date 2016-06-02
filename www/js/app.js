@@ -6,13 +6,13 @@ app.config(function ($stateProvider,$urlRouterProvider) {
     templateUrl:'templates/employee-list.html'
   }).state('comments',{
     url:'/comments',
-    templateUrl:'templates/comment-list.html',
-    cache: false,
+    templateUrl:'templates/comment-list.html'
   }).state('addComment',{
     url:'/addComment',
     templateUrl:'templates/comment-add.html'
   }).state('login',{
     url:'/login',
+    controller:'LoginCtrl',
     templateUrl:'templates/login.html'
   });
   $urlRouterProvider.otherwise('/login');

@@ -19,7 +19,7 @@ angular.module('vatesApp').controller('CommentAddCtrl', ['$rootScope','$scope','
           pm: $rootScope.username
         };
         
-        $http.post('http://localhost:8080/api/employees/'+$scope.selectedEmployee.$loki+'/comments', newComment).success(function(data){
+        $http.post('http://10.10.11.218:8080/api/employees/'+$scope.selectedEmployee.$loki+'/comments', newComment).success(function(data){
           alert(data.message);
           $state.go('comments');
         });

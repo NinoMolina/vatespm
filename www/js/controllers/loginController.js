@@ -20,7 +20,7 @@ angular.module('vatesApp').controller('LoginCtrl', ['$rootScope','$scope','$http
           var postObject = new Object();
           postObject.user = $scope.datos.user;
           postObject.password = $scope.datos.password;
-          $http.post('http://localhost:8080/api/login',postObject).success(function(data){
+          $http.post('http://10.10.11.218:8080/api/login',postObject).success(function(data){
                if(data.logged == true){
                 alert("usuario log ok");
                 $rootScope.username=postObject.user;
