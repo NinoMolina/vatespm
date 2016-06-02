@@ -1,10 +1,11 @@
 angular.module('vatesApp').controller('EmployeeListCtrl', ['$rootScope','$scope','$http','$state','employeeService',function ($rootScope,$scope,$http,$state,employeeService) {
       
 
-      $http.get('http://10.10.11.218:8080/api/employees?pm='+$rootScope.username).success(function(data){
+
+	  employeeService.getEmployeesByPm($rootScope.username).then(function(data){
       	$scope.employees = data;
       });
-
+      
       $scope.showComments = function(key) {
       	employeeService.setSelectedEmployee($scope.employees[key]);
       	$state.go('comments');

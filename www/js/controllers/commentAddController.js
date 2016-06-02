@@ -1,4 +1,4 @@
-angular.module('vatesApp').controller('CommentAddCtrl', ['$rootScope','$scope','$http','$state','employeeService',function ($rootScope,$scope,$http,$state,employeeService) {
+angular.module('vatesApp').controller('CommentAddCtrl', ['$rootScope','$scope','$http','$state','employeeService','commentService',function ($rootScope,$scope,$http,$state,employeeService,commentService) {
       $scope.selectedEmployee = employeeService.getSelectedEmployee();
       $scope.comment;
       $scope.commentDate;
@@ -19,7 +19,8 @@ angular.module('vatesApp').controller('CommentAddCtrl', ['$rootScope','$scope','
           pm: $rootScope.username
         };
         
-        $http.post('http://10.10.11.218:8080/api/employees/'+$scope.selectedEmployee.$loki+'/comments', newComment).success(function(data){
+
+        commentService.addComment($scope.selectedEmployee.$loki,newComment).then(function(data){
           alert(data.message);
           $state.go('comments');
         });
