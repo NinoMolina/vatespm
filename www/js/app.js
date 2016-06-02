@@ -3,11 +3,12 @@ var app = angular.module('vatesApp',['ionic','ion-floating-menu']);
 app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('listEmployees',{
     url:'/listEmployees',
+    controller: 'EmployeeListCtrl',
     templateUrl:'templates/employee-list.html'
   }).state('comments',{
     url:'/comments',
     templateUrl:'templates/comment-list.html',
-    cache:false
+    cache: false
   }).state('addComment',{
     url:'/addComment',
     templateUrl:'templates/comment-add.html'

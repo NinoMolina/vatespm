@@ -1,4 +1,4 @@
-angular.module('vatesApp').controller('LoginCtrl', ['$rootScope','$scope','$http','$state','loginService', function($rootScope,$scope,$http,$state,loginService){
+angular.module('vatesApp').controller('LoginCtrl', function($rootScope,$scope,$http,$state,loginService){
 
       $scope.invalido = false;
       $scope.cargando = false;
@@ -30,4 +30,4 @@ angular.module('vatesApp').controller('LoginCtrl', ['$rootScope','$scope','$http
                 $scope.mensaje = "Usuario no existe";
           });
       }
-}]);
+});
