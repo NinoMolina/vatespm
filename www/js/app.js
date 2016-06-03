@@ -7,6 +7,7 @@ app.config(function ($stateProvider,$urlRouterProvider) {
     templateUrl:'templates/employee-list.html'
   }).state('comments',{
     url:'/comments',
+    controller:'CommentListCtrl',
     templateUrl:'templates/comment-list.html',
     cache: false
   }).state('addComment',{
