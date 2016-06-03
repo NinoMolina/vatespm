@@ -15,7 +15,12 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;        // set our port
 
-    
+router.route('/apk')
+	  .get(function(req, res) {
+	    	var file = __dirname + '/apk/vatespm.apk';
+ 			res.download(file); // Set disposition and send it.
+       });
+
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
