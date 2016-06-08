@@ -4,23 +4,28 @@ app.config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider.state('listEmployees',{
     url:'/listEmployees',
     controller: 'EmployeeListCtrl',
-    templateUrl:'templates/employee-list.html'
+    templateUrl:'modules/employees/employee-list.html'
   }).state('comments',{
     url:'/comments',
     controller:'CommentListCtrl',
-    templateUrl:'templates/comment-list.html',
+    templateUrl:'modules/comments/list/comment-list.html',
     cache: false
   }).state('addComment',{
     url:'/addComment',
-    templateUrl:'templates/comment-add.html'
+    templateUrl:'modules/comments/add/comment-add.html'
   }).state('login',{
     url:'/login',
     controller:'LoginCtrl',
-    templateUrl:'templates/login.html'
+    templateUrl:'modules/login/login.html'
   });
   $urlRouterProvider.otherwise('/login');
 });
 
+app.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

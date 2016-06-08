@@ -1,0 +1,11 @@
+ <ion-view view-title="{{username | capitalize}} Employees">
+ <ion-content>
+    <div class="list">
+           <div class="item" ng-repeat="(key, employee) in employees" on-hold="showMenu($event, $index)">
+                  <h2><i class="icon ion-person"> {{employee.lastName | capitalize}}, {{employee.name | capitalize}}</i></h2>
+                  <p><i class="icon ion-briefcase"> {{employee.project.name}}</i></p>
+                  <p><i class="icon ion-ios-telephone"> {{employee.cellular}}</i></p>
+          </div>
+    </div>
+ </ion-content>
+</ion-view>

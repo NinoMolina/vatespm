@@ -1,6 +1,6 @@
 angular.module('vatesApp').service('commentService', function ($http) {
 
-	var baseUrl = 'http://localhost:8080/api';
+	var baseUrl = 'https://vatespm.herokuapp.com/api';
 
     var getCommentsByEmployee = function(employeeId) {
       	var promise = $http.get(baseUrl + '/employees/'+employeeId+'/comments').then(function (response) {

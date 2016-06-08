@@ -5,15 +5,15 @@
 
 <div class="list">
   <label class="item item-input item-stacked-label">
-    <span class="input-label">Empleado</span>
-    <span class="input-label">{{selectedEmployee.name}} {{selectedEmployee.lastName}}</span>
+    <span class="input-label">Employee</span>
+    <span class="input-label">{{selectedEmployee.name | capitalize}} {{selectedEmployee.lastName | capitalize}}</span>
   </label>
   <label class="item item-input item-stacked-label">
-      <span class="input-label">Fecha Comentario</span>
+      <span class="input-label">Comment Date</span>
       <input type="date" ng-model="commentDate">
   </label>
   <label class="item item-input item-stacked-label">
-    <span class="input-label">Comentario</span>
+    <span class="input-label">Comment</span>
     <textarea ng-model="comment" placeholder="insert text here..."></textarea>
   </label>
 </div>
@@ -21,7 +21,7 @@
   <div class="col"></div>
   <div class="col"><button type="submit" class="button button-large button-balanced">Save</button></div>
   <div class="col"></div>
-  <div class="col"><button type="submit" class="button button-large button-assertive">Cancel</button></div>
+  <div class="col"><button ng-click="cancel()" class="button button-large button-assertive">Cancel</button></div>
   <div class="col"></div>
 </div>
 

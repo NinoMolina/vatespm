@@ -1,0 +1,14 @@
+<ion-view view-title="{{selectedEmployee.name | capitalize}} {{selectedEmployee.lastName | capitalize}} Comments">
+	<ion-floating-button click="showAddComment()"  has-footer="false" button-color="#0040FF" icon="ion-plus" iconColor="#fff">
+	</ion-floating-button>
+	<ion-content >
+	    <div class="list">
+		    <div class="item" ng-repeat="(key,comment) in commentsByEmployee" on-hold="showPopupComment($event, $index)">
+		       	<h2><i>{{comment.comment}}</i></h2>
+		       	<p>{{comment.commentDate}}</p>
+		       	<p>{{comment.pm}}</p>
+		    </div>
+	    </div>
+	</ion-content>
+ </ion-view>
+

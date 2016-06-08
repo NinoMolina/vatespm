@@ -1,6 +1,6 @@
 angular.module('vatesApp').service('loginService', function ($http) {
 
-	var baseUrl = 'http://localhost:8080/api';
+	var baseUrl = 'https://vatespm.herokuapp.com/api';
 	
 	var login = function(user, password) {
     	var requestData = new Object();

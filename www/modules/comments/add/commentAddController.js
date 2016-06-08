@@ -3,7 +3,11 @@ angular.module('vatesApp').controller('CommentAddCtrl', ['$rootScope','$scope','
       $scope.comment;
       $scope.commentDate;
 
-      $scope.add = function(){
+      $scope.cancel = function() {
+        $state.go('comments');
+      };
+
+      $scope.add = function() {
 
         var day = $scope.commentDate.getDate();
         var month = $scope.commentDate.getMonth() + 1;

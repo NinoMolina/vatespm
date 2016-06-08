@@ -1,0 +1,25 @@
+ <ion-view view-title="Vates PM Login">
+ <ion-content>
+    <form name="frmLogin" ng-submit="login()">         
+           
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" 
+                 placeholder="Username" 
+                 name="user" 
+                 required="required" 
+                 ng-model="user.username" >
+        </label>
+        <label class="item item-input">
+           <input type="password" 
+                  placeholder="Password" 
+                  name="password" 
+                  required="required" 
+                  ng-model="user.password">
+        </label>
+      </div>
+      <button type="submit" class="button button-block button-positive">Login</button>
+    </form>
+ </ion-content>
+  
+ </ion-view>

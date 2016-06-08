@@ -1,7 +1,7 @@
 angular.module('vatesApp').service('employeeService', function ($http) {
     var employee = {};
 
-	var baseUrl = 'http://localhost:8080/api';
+	var baseUrl = 'https://vatespm.herokuapp.com/api';
 
     var getEmployeesByPm = function(pm) {
     	// $http returns a promise, which has a then function, which also returns a promise

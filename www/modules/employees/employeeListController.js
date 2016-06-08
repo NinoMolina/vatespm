@@ -1,14 +1,16 @@
 angular.module('vatesApp').controller('EmployeeListCtrl', function ($rootScope,$scope,$http,$state,$ionicActionSheet,$ionicPopup,employeeService) {
       
-	employeeService.getEmployeesByPm($rootScope.username).then(function(data){
+	   $scope.username = $rootScope.username;
+
+     employeeService.getEmployeesByPm($rootScope.username).then(function(data){
       	$scope.employees = data;
       });
 
       var showPopupDetail = function() {
             var myPopup = $ionicPopup.show({
-                      templateUrl: 'templates/employee-list-detail.html',
+                      templateUrl: 'modules/employees/employee-list-detail.html',
                       title: 'Detail',
-                      subTitle: 'showing main information about employee',
+                      subTitle: 'showing main information',
                       scope: $scope,
                       buttons: [
                         {
@@ -33,11 +35,6 @@ angular.module('vatesApp').controller('EmployeeListCtrl', function ($rootScope,$
                 return true;
       };
 
-      $scope.showComments = function(key) {
-      	employeeService.setSelectedEmployee($scope.employees[key]);
-      	$state.go('comments');
-      };
-
       $scope.showMenu = function(event,key) {
             
             var selectedEmployee = $scope.employees[key];
@@ -46,11 +43,11 @@ angular.module('vatesApp').controller('EmployeeListCtrl', function ($rootScope,$
             var title = selectedEmployee.name + ' ' + selectedEmployee.lastName
             $ionicActionSheet.show({
               buttons: [{
-                text: 'Ver Comentarios'
+                text: 'Show Comments'
               }, {
-                text: 'Detalle'
+                text: 'Detail'
               }],
-              cancelText: 'Cancelar',
+              cancelText: 'Cancel',
               titleText: title,
               buttonClicked: employeeMenuButtonClicked
             });

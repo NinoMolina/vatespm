@@ -18,14 +18,17 @@
     <script src="lib/ion-floating-menu/dist/ion-floating-menu.js" type="text/javascript"></script>
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers/commentAddController.js"></script>
-    <script src="js/controllers/commentListController.js"></script>
-    <script src="js/controllers/employeeListController.js"></script>
-    <script src="js/controllers/loginController.js"></script>
-    <script src="js/services/employeeService.js"></script>
-    <script src="js/services/commentService.js"></script>
-    <script src="js/services/loginService.js"></script>
+    <script src="modules/app.js"></script>
+    <!-- comments module -->
+    <script src="modules/comments/add/commentAddController.js"></script>
+    <script src="modules/comments/list/commentListController.js"></script>
+    <script src="modules/comments/commentService.js"></script>
+    <!-- employees module -->
+    <script src="modules/employees/employeeListController.js"></script>
+    <script src="modules/employees/employeeService.js"></script>
+    <!-- login module -->
+    <script src="modules/login/loginController.js"></script>
+    <script src="modules/login/loginService.js"></script>
 
   </head>
   <body ng-app="vatesApp">
