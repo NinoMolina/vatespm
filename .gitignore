@@ -1,2 +1,5 @@
 *.db
 *.log
+platforms/
+node_modules/
+plugins/

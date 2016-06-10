@@ -8,13 +8,13 @@ function EmployeeModel() {
 EmployeeModel.prototype = {
     constructor: EmployeeModel,
     getEmployees: function () {
-    	return db.getCollection('employees').data;
+    	return db.getCollection('employees').chain().simplesort('lastName').data();
     },
     getEmployeesByPm: function (pm) {
-    	return db.getCollection('employees').find({pm: pm});
+    	return db.getCollection('employees').chain().find({pm: pm}).simplesort('lastName').data();
     },
     getEmployee: function (employeeId) {
-    	return db.getCollection('employees').get(employeeId);
+    	return db.getCollection('employees').chain().get(employeeId);
     }
 }
 
